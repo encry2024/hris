@@ -62,7 +62,7 @@
                                                             <td>{{ $applicant->last_name }}</td>
                                                             <td>{{ $applicant->email }}</td>
                                                             {{-- <td>{{ date('F d, Y h:i A', strtotime($applicant->created_at)) }}</td> --}}
-                                                            <td><a href="{{ route('admin_user_applicant_show', $applicant->id) }}"><i class="fa fa-search"></i></a></td>
+                                                            <td><a href="{{ route('admin_user_applicant_show', $applicant->id) }}" class="btn btn-xs btn-info"><i class="fa fa-search"></i></a></td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>

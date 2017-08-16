@@ -62,7 +62,7 @@
                                                             <td>{{ $employee->applicant->middle_initial }}</td>
                                                             <td>{{ $employee->applicant->last_name }}</td>
                                                             <td>{{ $employee->applicant->email }}</td>
-                                                            <td><a href="{{ route('admin_user_employee_show', $employee->id) }}"><i class="fa fa-search"></i></a></td>
+                                                            <td><a href="{{ route('admin_user_employee_show', $employee->id) }}"  class="btn btn-xs btn-info"><i class="fa fa-search"></i></a></td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>

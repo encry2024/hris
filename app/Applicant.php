@@ -73,6 +73,12 @@ class Applicant extends Model
 
    public function fullName()
    {
+      if($this->first_name == "") {
+         return $this->last_name;
+      } elseif ($this->last_name == "") {
+         return $this->first_name;
+      }
+
       return $this->first_name . ' ' . $this->last_name;
    }
 

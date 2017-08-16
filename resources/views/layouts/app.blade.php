@@ -12,7 +12,6 @@
 
    <!-- Styles -->
    <link href="{{ asset('bootstrap-3.3.7/css/bootstrap.css') }}" rel="stylesheet">
-   <link href="{{ asset('bootstrap-3.3.7/css/bootstrap-theme.css') }}" rel="stylesheet">
    <link href="{{ asset('css/hris.css') }}" rel="stylesheet">
    <link href="{{ asset('bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.css') }}" rel="stylesheet">
    <link href="{{ asset('bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.standalone.css') }}" rel="stylesheet">

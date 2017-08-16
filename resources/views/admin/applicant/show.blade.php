@@ -238,8 +238,8 @@
                                                 <div class="form-group">
                                                     <label for="InformationLastUpdate" class="col-md-4 control-label">Profile Last Update:</label>
 
-                                                    <div class="col-md-6">
-                                                        <input id="InformationLastUpdate" class="control-label">{{ date('F d, Y h:i A', strtotime($applicant->updated_at)) }}</label>
+                                                    <div class="col-md-8">
+                                                        <input style="width: 400px; text-align: left;" id="InformationLastUpdate" class="form-control" value="{{ date('F d, Y h:i A', strtotime($applicant->updated_at)) }}" disabled>
                                                     </div>
                                                 </div>
                                             </form>
