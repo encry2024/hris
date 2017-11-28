@@ -111,7 +111,7 @@
                                              <div class="col-md-6">
                                                 <div class="input-group">
                                                    <div class="input-group-addon">PHP</div>
-                                                   <input style="width: 347px;" id="salary" class="form-control" value="{{ $employee->salary }}">
+                                                   <input style="width: 347px;" id="salary" class="form-control" value="{{ $employee->applicant->expected_salary }}">
                                                 </div>
                                              </div>
                                           </div>
@@ -359,7 +359,7 @@
                                        <label for="salary" class="col-md-4 control-label">Salary:</label>
 
                                        <div class="col-md-6">
-                                          <label id="salary" class="control-label">PHP {{ $employee->salary}}</label>
+                                          <label id="salary" class="control-label">PHP {{ $employee->applicant->expected_salary}}</label>
                                        </div>
                                     </div>
 

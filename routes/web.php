@@ -91,8 +91,6 @@ Route::any('/lesson/{lesson}/{pdf}', function(App\Lesson $lesson, $pdf) {
 
 });
 
-/*******************************************************************************************************************/
-
 Route::resource('disciplinary_action', 'DisciplinaryActionController');
 Route::resource('announcements', 'AnnouncementController');
 Route::resource('exams', 'ExamController');
