@@ -16,6 +16,16 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="pull-right">
+                                <a style="cursor: pointer;" class="btn btn-success" data-toggle="modal" data-target="#import-applicant-data-modal"><i class="fa fa-download"></i>&nbsp;&nbsp;Import Applicant Data</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
                     {{--<div class="row">
                         <div class="col-lg-12">
                             <div class="pull-right">
@@ -25,6 +35,14 @@
                     </div>--}}
 
                     <div class="row">
+                        @if(Session::has('msg'))
+                            <div class="col-lg-12">
+                                <div class="alert alert-info" role="alert" style="font-size: 14px;">
+                                    <i class="fa fa-info-circle"></i> {{ Session::get('msg') }}
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="col-lg-12">
                             <ul class="nav nav-tabs" role="tablist" style="background-color: white;">
                                 <li role="presentation">
@@ -80,4 +98,30 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="import-applicant-data-modal">
+        <form class="form-horizontal" action="{{ route('admin.import.applicant.data') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Import Applicant Data</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="import-field" class="control-label col-lg-4">Applicant Data</label>
+                            <div class="col-lg-6">
+                                <input name="import_field" id="import-field" type="file" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Import</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </form>
+   </div><!-- /.modal -->
 @endsection

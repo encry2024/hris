@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Excel;
 
 class Applicant extends Model
 {
@@ -12,7 +13,7 @@ class Applicant extends Model
    protected $fillable = [
       'first_name', 'middle_initial', 'last_name', 'date_of_birth', 'address', 'mobile_number',
       'home_number', 'email', 'gender', 'initial_interview', 'exam_interview', 'final_interview', 'photo_dir',
-      'employee_id', 'sss', 'philhealth', 'tin', 'pag_ibig', 'nbi_clearance'
+      'employee_id', 'sss', 'philhealth', 'tin', 'pag_ibig', 'nbi_clearance', 'health_status'
    ];
    //
 
@@ -196,5 +197,53 @@ class Applicant extends Model
       ]));
 
       return redirect()->back()->with('msg', 'Applicant "' . $applicant->fullName() .'" has passed the Initial Interview.');
+   }
+
+   public static function importApplicantData($data)
+   {
+      $path = $data->file('import_field');
+      // dd($path->getRealPath());
+      $import_data = Excel::load($path, function($reader) {})->get();
+
+      if(!empty($import_data) && $import_data->count()) {
+
+         foreach ($import_data->toArray() as $key => $value) {
+            $insert[] = [
+               'employee_id'                 => $value['employee_id'],
+               'first_name'                  => $value['first_name'],
+               'middle_initial'              => $value['middle_initial'],
+               'last_name'                   => $value['last_name'],
+               'address'                     => $value['address'],
+               'email'                       => $value['email'],
+               'date_of_birth'               => $value['date_of_birth'],
+               'age'                         => $value['age'],
+               'gender'                      => $value['gender'],
+               'mobile_number'               => $value['mobile_number'],
+               'initial_interview'           => $value['initial_interview'],
+               'exam_interview'              => $value['exam_interview'],
+               'final_interview'             => $value['final_interview'],
+               'job_position'                => $value['job_position'],
+               'expected_salary'             => $value['expected_salary'],
+               'type_of_employment'          => $value['type_of_employment'],
+               'emergency_person'            => $value['emergency_person'],
+               'emergency_person_contact'    => $value['emergency_person_contact'],
+               'emergency_person_address'    => $value['emergency_person_address'],
+               'sss'                         => $value['sss'],
+               'philhealth'                  => $value['philhealth'],
+               'health_status'               => $value['health_status'],
+               'nbi_clearance'               => $value['nbi_clearance'],
+               'tin'                         => $value['tin'],
+               'pag_ibig'                    => $value['pag_ibig'],
+               'photo_dir'                   => 'N/A',
+               'resume_path'                 => 'N/A'
+            ];
+         }
+
+         if(!empty($insert)) {
+            Applicant::insert($insert);
+
+            return redirect()->back()->with('msg', 'Applicant\'s data was successfully imported.');
+         }
+      }
    }
 }

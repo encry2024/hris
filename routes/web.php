@@ -24,6 +24,7 @@ Route::post('applicant/store', 'ApplicantController@store')->name('applicant_sto
 Route::group(['prefix' => 'user'], function() {
    Route::get('/employees', 'Admin\UserController@index')->name('admin_user_index');
    Route::get('/create', 'Admin\UserController@create')->name('admin_user_create');
+   Route::post('/applicants', 'Admin\ApplicantController@importApplicantData')->name('admin.import.applicant.data');
    // Route::post('/store', 'Admin\PendingUserController@store')->name('admin_pending_user_store');
 
    Route::get('/applicants', 'ApplicantController@index')->name('admin_user_applicant_index');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Applicant;
 use App\Http\Requests\UpdateApplicantRequest;
+use Excel;
 
 class ApplicantController extends Controller
 {
@@ -103,5 +104,13 @@ class ApplicantController extends Controller
         $passInitialInterview = Applicant::passInitialInterview($applicant);
 
         return $passInitialInterview;
+    }
+
+    public function importApplicantData(Request $request)
+    {
+        // dd($request->all());
+        $import_applicant_data = Applicant::importApplicantData($request);
+
+        return $import_applicant_data;
     }
 }
